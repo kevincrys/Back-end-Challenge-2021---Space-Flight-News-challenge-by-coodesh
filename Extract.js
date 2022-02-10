@@ -1,5 +1,5 @@
 const axios= require ('axios')
-const dbsql = require('./dbsql');
+const dbsql = require("./bd/dbsql");
 
 //Extração dos dados da Api
  async function Extract() {
@@ -22,7 +22,7 @@ for(let i=7033;i<ultimaAtt;i++){
 for(let j=0;j<2;j++){
 try{
     var dados= await axios.get('https://api.spaceflightnewsapi.net/v3/articles/'+i);
-    var inserta = dbsql.insertarticle({id:dados.data.id , featured:dados.data.featured , title:dados.data.title ,url:dados.data.url ,imageUrl:dados.data.imageUrl ,newsSite:dados.data.newsSite ,summary:dados.data.summary ,publishedAt:dados.data.publishedAt ,launches_ID:dados.data.launches.id ,launches_provider:dados.data.launches.provider ,events_id:dados.data.events.id ,events_provider:dados.data.events.provider })
+    var inserta = dbsql.insertArticle({id:dados.data.id , featured:dados.data.featured , title:dados.data.title ,url:dados.data.url ,imageUrl:dados.data.imageUrl ,newsSite:dados.data.newsSite ,summary:dados.data.summary ,publishedAt:dados.data.publishedAt ,launches_ID:dados.data.launches.id ,launches_provider:dados.data.launches.provider ,events_id:dados.data.events.id ,events_provider:dados.data.events.provider })
     console.log(dados.data.id);
     break;
     }

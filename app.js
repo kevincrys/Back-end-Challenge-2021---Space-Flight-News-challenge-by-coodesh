@@ -1,13 +1,26 @@
 var express = require('express');
 var app = express();
-console.log("Carregando paginas")
-const dados2 =  require('./Transform');
-const Extract= require ('./Extract')
+var indexRouter = require('./routes/index');
+var articleRouter = require('./routes/articles');
+var bodyParser = require('body-parser')
 
-app.get('/', (req, res) => {
-      res.status(200);
-      res.send("Back-end Challenge 2021 🏅 - Space Flight News");
-  });
+var CronJob = require('cron').CronJob;
+const job = new CronJob('0 0 9 * * *', () => {
+var Extract= require ('./Extractdiario')
+}, null, true, 'America/Sao_Paulo')
+job.start();
+
+
+
+console.log("Carregando paginas")
+//const dados2 =  require('./Transform');
+//const Extract= require ('./Extract')
+
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+app.use('/', indexRouter);
+app.use('/articles', articleRouter);
 
 
 
