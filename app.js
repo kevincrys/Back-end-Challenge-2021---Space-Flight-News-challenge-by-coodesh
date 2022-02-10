@@ -17,7 +17,7 @@ job.start();
 console.log("Carregando paginas")
 
 //coleta e armazenar todos os artigos no banco de dados
-const Extract= require ('./Extract')
+//const Extract= require ('./Extract')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())

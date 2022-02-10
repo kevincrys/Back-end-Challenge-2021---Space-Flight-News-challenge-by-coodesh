@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   limit=10
   }
   else{
-    limit=req.query.limit
+    limit=parseInt(req.query.limit)
   }
 
   //necessário receber o parametro pag via url para a paginação,
