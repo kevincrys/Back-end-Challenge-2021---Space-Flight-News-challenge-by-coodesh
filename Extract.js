@@ -1,13 +1,14 @@
 const axios= require ('axios')
 const dbsql = require("./bd/dbsql");
 
-//Extração dos dados da Api
+//Extração de todos os artigos da Api
  async function Extract() {
 var ultimaAtt =0;
 
 //se falhar tenta mais  2 vezes
   for(let i=0;i<3;i++)
   {
+    //coleta o artigo mais recente
   try{
       var dados= await axios.get('https://api.spaceflightnewsapi.net/v3/articles/');
 
