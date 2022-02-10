@@ -8,5 +8,10 @@ async function connect(){
     global.connection = connection;
     return connection;
 }
-
-module.exports = {}
+async function insertarticle(customer){
+    const conn = await connect();
+    const sql = 'INSERT INTO articles(id,featured,title,url,imageUrl,newsSite,summary,publishedAt,launches_ID,launches_provider,events_id,events_provider) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);';
+    const values = [customer.id, customer.featured, customer.title, customer.url, customer.imageUrl, customer.newsSite, customer.summary,customer.publishedAt,customer.launches_ID,customer.launches_provider,customer.events_id,customer.events_provider];
+    return await conn.query(sql, values);
+}
+module.exports = {insertarticle}
