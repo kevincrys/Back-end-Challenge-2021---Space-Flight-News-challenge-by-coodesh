@@ -20,7 +20,7 @@ var ultimaAtt =0;
   }
 }
 //percorre todo os artigos da api e armazena no Banco de dados
-for(let i=11539;i<ultimaAtt;i++){
+for(let i=0;i<ultimaAtt;i++){
   //se falhar tenta mais  2 vezes
 for(let j=0;j<2;j++){
 try{
