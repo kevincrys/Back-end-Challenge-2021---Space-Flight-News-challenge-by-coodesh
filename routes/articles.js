@@ -106,6 +106,7 @@ router.get('/:id', (req, res) => {
   var sqlp = dbsql.selectArticlesById(req.params.id);
   sqlp.then(sql => {
     var featured;
+    if(sql[0] != undefined){
     if(sql[0].featured==0){featured=false}
     else{featured=true}
 
@@ -134,8 +135,10 @@ router.get('/:id', (req, res) => {
           ]
       }
     )
-
+}
+else{res.send("artigo não encontrado")}
   })
+
   });
 
   router.post('/', (req, res) => {
