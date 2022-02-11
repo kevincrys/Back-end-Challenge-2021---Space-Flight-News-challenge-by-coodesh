@@ -34,8 +34,8 @@ async function insertArticle(customer){
 
 async function updateArticlesById(id, customer){
     const conn = await connect();
-    const sql = 'UPDATE cliente SET featured=?,title=?,url=?,imageUrl=?,newsSite=?,summary=?,publishedAt=?,launches_ID=?,launches_provider=?,events_id=?,events_provider=? WHERE articles.id=?';
-    const values = [ customer.featured, customer.title, customer.url, customer.imageUrl, customer.newsSite, customer.summary,customer.publishedAt,customer.launches_ID,customer.launches_provider,customer.events_id,customer.events_provider,clienteid];
+    const sql = 'UPDATE articles SET featured=?,title=?,url=?,imageUrl=?,newsSite=?,summary=?,publishedAt=?,launches_ID=?,launches_provider=?,events_id=?,events_provider=? WHERE articles.id=?';
+    const values = [ customer.featured, customer.title, customer.url, customer.imageUrl, customer.newsSite, customer.summary,customer.publishedAt,customer.launches_ID,customer.launches_provider,customer.events_id,customer.events_provider,id];
     return await conn.query(sql, values);
 }
 
